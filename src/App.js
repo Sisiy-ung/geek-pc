@@ -1,17 +1,21 @@
+import { Layout } from './pages/Layout';
 import './App.css';
+import { AuthRoute } from './components/AuthRole';
 import Login from './pages/Login'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Router, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/Login" element={<Login />}>登录</Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
-  );
+    <Router>
+      <Routes>
+        <Route path="/*" element={
+          <AuthRoute>
+            <Layout />
+          </AuthRoute>
+        } />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Router>
+  )
 }
-
-export default App;
+export default App
